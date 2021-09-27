@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <title>Books API Example</title>
+    <link rel="stylesheet" href="./bookfinder.css">
+  </head>
+  <body>
+    <input type="search" />
+    <!-- <form action="submit">
+      <input />
+      <button type="submit">search book</button>
+    </form> -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close"></span>
+        <p>display book info</p>
+      </div>
+    </div>
+    <div id="content"></div>
+    <script>console.log("in html: ", document.getElementById("content"))</script>
+    <script src="./bookfinder.js"></script>
+  </body>
+</html>
