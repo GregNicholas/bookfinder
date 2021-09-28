@@ -1,19 +1,38 @@
+body {
+  background-color: #246068;
+}
+
+h1 {
+  margin: auto;
+  text-align: center;
+  color: #FFD3AA;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+}
+
 .book-preview {
+    background-color: #69969C;
     display: inline-block;
     width: 12.5rem;
     height: 16rem;
     margin: 1rem;
     padding: 2px;
-    border: 1px solid;
     overflow: hidden;
     text-overflow: ellipsis;
+    box-shadow: 4px 8px 8px -4px lightblue;
+    border-radius: 3%;
 }
 
 .book-preview img {
     position: relative;
     left: 50%;
     transform: translate(-50%);
-    border: 2px solid magenta;
     height: 10rem;
 }
 
@@ -27,6 +46,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
+
+@media only screen and (max-width: 600px) {
+  #content {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 .title {
     font-size: 1rem;
@@ -47,7 +73,7 @@
   }
   
   /* Modal Content/Box */
-  .modal-content {
+  #modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;

@@ -5,16 +5,22 @@
     <link rel="stylesheet" href="./bookfinder.css">
   </head>
   <body>
-    <input type="search" />
+    <h1>Book Finder</h1>
+    <div class="input">
+      <input type="search" placeholder="search for book" />
+    </div>
+   
     <!-- <form action="submit">
       <input />
       <button type="submit">search book</button>
     </form> -->
-    <div id="myModal" class="modal">
+    <div id="my-modal" class="modal">
       <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close"></span>
-        <p>display book info</p>
+      <div id="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modal-title"></h3>
+        <img id="modal-img" src="" />
+        <p id="modal-info"></p>
       </div>
     </div>
     <div id="content"></div>

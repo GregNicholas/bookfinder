@@ -1,7 +1,7 @@
 const handleResponse = (response) => {
     document.getElementById("content").innerHTML = '';
-    for (var i = 0; i < response.items.length; i++) {
-    var item = response.items[i];
+    for (let i = 0; i < response.items.length; i++) {
+    const item = response.items[i];
     // in production code, item.text should have the HTML entities escaped.
     //document.getElementById("content").innerHTML += "<br>" + item.volumeInfo.title;
     fetchOneBook(item.selfLink)
@@ -15,11 +15,44 @@ const createImage = (source) => {
 } 
 
 const showBookInfo = (bookData) => {
-    var modal = document.getElementById("myModal");
+    const modal = document.getElementById("my-modal");
+    const modalContent = document.getElementById("modal-content");
+    const modalTitle = document.getElementById("modal-title");
+    const modalImg = document.getElementById("modal-img");
+    const modalInfo = document.getElementById("modal-info");
     modal.style.display = "block";
-    var span = document.getElementsByClassName("close")[0];
-    const img = createImage(bookData.volumeInfo.imageLinks.thumbnail);
-    modal.appendChild(img);
+    const span = document.getElementsByClassName("close")[0];
+    
+    modalTitle.innerHTML = bookData.volumeInfo.title;
+    if(bookData.volumeInfo.imageLinks.small !== undefined) {
+        modalImg.src = bookData.volumeInfo.imageLinks.small;
+    } else if(bookData.volumeInfo.imageLinks.thumbnail !== undefined) {
+        modalImg.src = bookData.volumeInfo.imageLinks.thumbnail;
+    }
+
+    if(modalContent.contains(document.getElementById("modal-button"))) {
+        const button = document.getElementById("modal-button");
+        modalContent.removeChild(button).remove();
+    }
+
+    modalImg.alt = bookData.volumeInfo.title;
+
+    if (bookData.volumeInfo.description !== undefined) {
+        modalInfo.innerHTML = bookData.volumeInfo.description;
+    }
+    
+    if (bookData.saleInfo.buyLink !== undefined) {
+        const modalButton = document.createElement("button");
+        modalButton.onclick = () => {
+            window.open(bookData.saleInfo.buyLink, "_blank")
+        }
+        modalButton.id="modal-button";
+        modalButton.innerHTML = "Buy it!";
+        console.log(modalButton)
+        modalContent.appendChild(modalButton);
+    }
+    
+    console.log(bookData.saleInfo.buyLink)
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
